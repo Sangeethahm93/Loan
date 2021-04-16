@@ -140,9 +140,25 @@ class PermissionsTableSeeder extends Seeder
                 'title' => 'comment_access',
             ],
             [
-                'id'    => '34',
-                'title' => 'profile_password_edit',
+                'id'    => '35',
+                'title' => 'user_profile_access',
             ],
+            [
+                'id'    => '36',
+                'title' => 'user_profile_create',
+            ],
+            [
+                'id'    => '37',
+                'title' => 'user_profile_edit',
+            ],
+            [
+                'id'    => '38',
+                'title' => 'user_profile_show',
+            ],
+            [
+                'id'    => '39',
+                'title' => 'user_profile_delete',
+            ]
         ];
 
         Permission::insert($permissions);
