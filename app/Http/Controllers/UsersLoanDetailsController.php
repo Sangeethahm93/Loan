@@ -25,7 +25,7 @@ class UsersLoanDetailsController extends Controller
 
     public function create() 
     {
-        abort_if(Gate::denies('user_profile_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('user_profile_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $user = auth()->user();
         return view('user.loan-detail.create', compact('user'));
     }
@@ -81,7 +81,7 @@ class UsersLoanDetailsController extends Controller
     }
 
     public function show($id) {
-        abort_if(Gate::denies('user_profile_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('user_profile_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
     }
 
     public function edit() {

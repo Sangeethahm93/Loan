@@ -22,7 +22,7 @@ class UsersAdditionalDetailsController extends Controller
     }
 
     public function create() {
-        abort_if(Gate::denies('user_profile_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('user_profile_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $user = auth()->user();
 
@@ -41,7 +41,7 @@ class UsersAdditionalDetailsController extends Controller
     }
 
     public function show($id) {
-        abort_if(Gate::denies('user_profile_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('user_profile_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $userAdditionalDetails = UserAdditionalDetail::find($id);
         $users = UserAdditionalDetail::find($id)->getAdditionalUser;
@@ -53,7 +53,7 @@ class UsersAdditionalDetailsController extends Controller
     }
 
     public function edit() {
-        abort_if(Gate::denies('user_profile_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('user_profile_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
     }
 
     public function update() {
@@ -61,6 +61,6 @@ class UsersAdditionalDetailsController extends Controller
     }
 
     public function destroy() {
-        abort_if(Gate::denies('user_profile_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('user_profile_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
     }
 }
