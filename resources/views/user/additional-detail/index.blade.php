@@ -5,7 +5,6 @@
     <div class="card-header">
         Additioanal Details
     </div>
-
     <div class="card-body">
         @if($user['additional_details'])
             <a class="btn btn-info mx-auto" href="{{ route('profile.additional-details.edit', $userAdditionalDetail['id']) }}">Edit Occupation Details</a>
@@ -85,7 +84,6 @@
                     </button>
                 </div>
             </form>
-            {{-- <a class="btn btn-info mx-auto" href="{{ route("profile.additional-details.create") }}">Add Income and Bank Details</a> --}}
         @endif
     </div>
 </div>
