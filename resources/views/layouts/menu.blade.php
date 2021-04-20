@@ -69,7 +69,7 @@
                 </a>
             </li>
         @endcan
-        @can('user_profile_access')
+        @can('user_profile_create')
             <li class="c-sidebar-nav-dropdown">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-user c-sidebar-nav-icon"></i>

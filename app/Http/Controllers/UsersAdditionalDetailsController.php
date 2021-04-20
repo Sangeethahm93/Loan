@@ -17,7 +17,8 @@ class UsersAdditionalDetailsController extends Controller
         $userId = auth()->user()->id;
         $user = auth()->user();
         $userAdditionalDetails = UserAdditionalDetail::all()->where('user_id', $userId);
-        $userAdditionalDetail = json_decode($userAdditionalDetails, true);
+        $userAdditionalDetail = json_decode($userAdditionalDetails[0], true);
+        //dd($userAdditionalDetail);
         return view('user.additional-detail.index', compact('user', 'userAdditionalDetail'));
     }
 

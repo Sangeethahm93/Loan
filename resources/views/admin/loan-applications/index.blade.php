@@ -1,14 +1,16 @@
 @extends('layouts.admin')
 @section('content')
-@can('loan_application_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.loan-applications.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.loanApplication.title_singular') }}
-            </a>
+@if($user->bank_income_details && $user->personal_details && $user->kyc_documents && $user->occupation && $user->loan_details && $user->additional_details && $user->salary_documents)
+    @can('loan_application_create')
+        <div style="margin-bottom: 10px;" class="row">
+            <div class="col-lg-12">
+                <a class="btn btn-success" href="{{ route('admin.loan-applications.create') }}">
+                    {{ trans('global.add') }} {{ trans('cruds.loanApplication.title_singular') }}
+                </a>
+            </div>
         </div>
-    </div>
-@endcan
+    @endcan
+@endif
 <div class="card">
     <div class="card-header">
         {{ trans('cruds.loanApplication.title_singular') }} {{ trans('global.list') }}
