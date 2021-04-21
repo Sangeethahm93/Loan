@@ -8,14 +8,15 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\StoreAdditionalDetailsRequest;
+use App\Http\Requests\UpdateAdditionalDetailsRequest;
 
 class UsersAdditionalDetailsController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+    */
     public function index() {
         abort_if(Gate::denies('user_profile_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $userId = auth()->user()->id;
@@ -82,13 +83,11 @@ class UsersAdditionalDetailsController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAdditionalDetailsRequest $request, $id) {
-        
+    public function update(UpdateAdditionalDetailsRequest $request, UserAdditionalDetail $userAdditionalDetail) {
+        //dd($request->all());
+        $userAdditionalDetail->update($request->all());
+        return redirect()->route('profile.additional-details.index');
     }
 
     public function destroy() {

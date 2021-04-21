@@ -43,6 +43,7 @@ class StatusesController extends Controller
 
     public function update(UpdateStatusRequest $request, Status $status)
     {
+        dd($request->all());
         $status->update($request->all());
 
         return redirect()->route('admin.statuses.index');

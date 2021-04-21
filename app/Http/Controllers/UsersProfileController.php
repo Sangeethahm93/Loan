@@ -46,15 +46,20 @@ class UsersProfileController extends Controller
         return response()->json($states);
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+    */
     public function index() 
     {
         abort_if(Gate::denies('user_profile_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        
         $userId = auth()->user()->id;
         $user = auth()->user();
-        $userPersonalDetails = UserPersonalDetail::all()->where('user_id', $userId);
-        $userPersonalDetail = json_decode($userPersonalDetails, true);
-        return view('user.personal.index', compact('user', 'userPersonalDetail'));
+        $educationTypes = EducationType::all()->pluck('name', 'id');
+        $countries = Country::all()->pluck('name', 'id');
+        $userPersonalDetail = UserPersonalDetail::where('user_id', $userId)->first();
+        return view('user.personal.index', compact('user', 'userPersonalDetail', 'educationTypes', 'countries'));
     }
 
     public function create() 

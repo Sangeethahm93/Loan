@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
-@if($user->bank_income_details && $user->personal_details && $user->kyc_documents && $user->occupation && $user->loan_details && $user->additional_details && $user->salary_documents)
-    @can('loan_application_create')
+@can('loan_application_create')
+    @if($user->bank_income_details && $user->personal_details && $user->kyc_documents && $user->occupation && $user->loan_details && $user->additional_details && $user->salary_documents)
         <div style="margin-bottom: 10px;" class="row">
             <div class="col-lg-12">
                 <a class="btn btn-success" href="{{ route('admin.loan-applications.create') }}">
@@ -9,8 +9,11 @@
                 </a>
             </div>
         </div>
-    @endcan
-@endif
+    @else 
+        <p>Please complete your profile details to apply for loan</p>
+    @endif
+@endcan
+
 <div class="card">
     <div class="card-header">
         {{ trans('cruds.loanApplication.title_singular') }} {{ trans('global.list') }}
